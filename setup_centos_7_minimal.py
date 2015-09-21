@@ -29,7 +29,11 @@ def setup_packages():
 	exec_command('yum -y install wget postfix vim-enhanced bind-utils tcpdump lsof sysstat nmap iptraf ntp man screen')
 	print('Fixing logrotate')
 	exec_command("sed -i 's/^weekly$/monthly/' /etc/logrotate.conf")
-	exec_command("sed -i 's/^rotate 4$/rotate 24\ncompresscmd \/usr\/bin\/bzip2\nuncompresscmd \/usr\/bin\/bunzip2\ncompressoptions -9\ncompressext .bz2/' /etc/logrotate.conf")
+	exec_command(
+		"""
+		sed -i 's/^rotate 4$/rotate 24\\ncompresscmd \/usr\/bin\/bzip2\\nuncompresscmd \/usr\/bin\/bunzip2\\ncompressoptions -9\\ncompressext .bz2/' /etc/logrotate.conf
+		"""
+	)
 	print('Disabling SELINUX end graphic boot')
 	exec_command("sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config")
 	exec_command("sed -i 's/rhgb//' /boot/grub2/grub.cfg")
