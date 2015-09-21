@@ -52,8 +52,12 @@ def main():
 	parser.add_argument('--vmware', dest='vmware', action='store_true', help='Is virtual machine')
 	parser.add_argument('--ipv6', dest='ipv6', action='store_true', help='Maintain IPv6 enabled')
 	parser.add_argument('--eth', dest='eth', help='Ethetnet name')
+	parser.add_argument('--clean-kernel', dest='kernel', action='store_true', help='Remove old kernels')
 
 	args = parser.parse_args()
+	if args.kernel:
+		exec_command('yum -y remove `rpm -q kernel | grep -v \`uname -r\``')
+		exit(0)
 
 	setup_packages()
 	if args.vmware:
