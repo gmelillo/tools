@@ -5,6 +5,9 @@ from sys import exit
 from subprocess import call
 
 def exec_command(command):
+	'''
+	Exec shell commands
+	'''
 	return call(command, shell=True)
 
 def check_so_version():
@@ -23,6 +26,9 @@ def check_so_version():
 	exit(1)
 
 def setup_packages():
+	'''
+	Do the default customization and update packages.
+	'''
 	print('Updating packages')
 	exec_command('yum update -y')
 	print('Installing tools')
