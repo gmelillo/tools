@@ -19,7 +19,7 @@ def check_so_version():
 	from platform import dist
 	if dist()[0] == 'centos':
 		return True
-	elif int(dist()[1].split('.')[0]) == 7:
+	if int(dist()[1].split('.')[0]) == 7:
 		return True
 	print('OS not supported by this script.')
 	print('Please use this script only on CentOS 7 minimal')
