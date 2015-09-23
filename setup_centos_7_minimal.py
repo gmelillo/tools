@@ -6,7 +6,7 @@ from subprocess import call, STDOUT
 from os import devnull, makedirs
 from os.path import basename, expanduser, isdir
 from time import time
-from logging import getLogger, StreamHandler, Formatter
+from logging import getLogger, StreamHandler, Formatter, INFO, DEBUG
 
 F_DEV_NULL = open(devnull, 'w')
 SCRIPT_NAME = basename(__file__)
@@ -19,7 +19,7 @@ formatter = Formatter(
 )
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-logger.setLevel(logging.INFO)
+logger.setLevel(INFO)
 
 def set_log_file():
 	if not isdir(LOG_FOLDER):
@@ -105,7 +105,7 @@ def main():
 		logger.info('Kernels removed.')
 		exit(0)
 	if args.debug:
-		logger.setLevel(logging.DEBUG)
+		logger.setLevel(DEBUG)
 
 	setup_packages()
 	if args.vmware:
