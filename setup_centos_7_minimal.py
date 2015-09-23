@@ -2,13 +2,21 @@
 
 from argparse import ArgumentParser
 from sys import exit
-from subprocess import call
+from subprocess import call, STDOUT
+from os import devnull
+
+F_DEV_NULL = open(devnull, 'w')
 
 def exec_command(command):
 	'''
 	Exec shell commands
 	'''
-	return call(command, shell=True)
+	return call(
+		command, 
+		shell=True,
+		stdout=F_DEV_NULL,
+		stderr=STDOUT
+	)
 
 def check_so_version():
 	'''
