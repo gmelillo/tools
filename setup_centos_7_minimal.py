@@ -19,7 +19,7 @@ def set_log_file():
 		F_DEV_NULL = open('{0}/{1}.log'.format(
 			LOG_FOLDER,
 			str(int(time()))
-		))
+		), 'w+')
 	except Exception as error:
 		print('Error opening log file.')
 		print(str(error))
