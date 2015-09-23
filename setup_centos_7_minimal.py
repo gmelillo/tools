@@ -3,8 +3,8 @@
 from argparse import ArgumentParser
 from sys import exit
 from subprocess import call, STDOUT
-from os import devnull
-from os.path import basename, expanduser, isdir, makedirs
+from os import devnull, makedirs
+from os.path import basename, expanduser, isdir
 from time import time
 
 F_DEV_NULL = open(devnull, 'w')
