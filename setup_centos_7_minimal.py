@@ -4,10 +4,22 @@ from argparse import ArgumentParser
 from sys import exit
 from subprocess import call, STDOUT
 from os import devnull
-from os.path import basename
+from os.path import basename, expanduser, isdir, makedirs
+from time import time
 
 F_DEV_NULL = open(devnull, 'w')
 SCRIPT_NAME = basename(__file__)
+LOG_FOLDER = expanduser('~/.centos_7_setup')
+
+def set_log_file():
+	if not isdir(LOG_FOLDER):
+		print('Creating directory {0}'.format(LOG_FOLDER))
+		makedirs(LOG_FOLDER)
+	try:
+		F_DEV_NULL = open('{0}/{1}.log'.format(
+			LOG_FOLDER,
+			str(int(time()))
+		))
 
 def exec_command(command):
 	'''
@@ -63,6 +75,7 @@ def main():
 	Check user arguments and perform every action needed to complete the first setup.
 	'''
 	check_so_version()
+	set_log_file()
 
 	parser = ArgumentParser()
 	parser.add_argument('--vmware', dest='vmware', action='store_true', help='Is virtual machine')
