@@ -4,8 +4,10 @@ from argparse import ArgumentParser
 from sys import exit
 from subprocess import call, STDOUT
 from os import devnull
+from os.path import basename
 
 F_DEV_NULL = open(devnull, 'w')
+SCRIPT_NAME = basename(__file__)
 
 def exec_command(command):
 	'''
@@ -90,7 +92,7 @@ def main():
 
 	print('First configuration terminate.')
 	print('Reboot the system and then remove the old kernels with the following command:')
-	print('\tyum -y remove `rpm -q kernel | grep -v \`uname -r\``')
+	print('\t{0} --clean-kernel'.format(SCRIPT_NAME))
 
 if __name__ == '__main__':
 	main()
