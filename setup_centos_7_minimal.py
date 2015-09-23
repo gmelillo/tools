@@ -20,6 +20,10 @@ def set_log_file():
 			LOG_FOLDER,
 			str(int(time()))
 		))
+	except Exception as error:
+		print('Error opening log file.')
+		print(str(error))
+		F_DEV_NULL = open(devnull, 'w')
 
 def exec_command(command):
 	'''
