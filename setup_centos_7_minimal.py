@@ -72,7 +72,9 @@ def main():
 
 	args = parser.parse_args()
 	if args.kernel:
+		print('Cleaning up old kernels.')
 		exec_command('yum -y remove `rpm -q kernel | grep -v \`uname -r\``')
+		print('Kernels removed.')
 		exit(0)
 
 	setup_packages()
