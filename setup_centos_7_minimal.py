@@ -80,6 +80,8 @@ def setup_packages():
 	exec_command("sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config")
 	exec_command("sed -i 's/rhgb//' /boot/grub2/grub.cfg")
 	exec_command("sed -i 's/quiet//' /boot/grub2/grub.cfg")
+	logger.info('Configuring SSH service')
+	exec_command("sed -i 's/#LogLevel INFO/LogLevel VERBOSE/' /etc/ssh/sshd_config")
 	logger.info('Disabling firewall')
 	exec_command('systemctl disable firewalld.service')
 
