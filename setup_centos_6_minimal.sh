@@ -7,7 +7,7 @@ echo "# Disables IPv6" >> /etc/sysctl.conf
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
 sed -i 's/rhgb//' /boot/grub/grub.conf
 sed -i 's/quiet//' /boot/grub/grub.conf

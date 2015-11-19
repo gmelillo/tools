@@ -77,7 +77,7 @@ def setup_packages():
 		"""
 	)
 	logger.info('Disabling SELINUX end graphic boot')
-	exec_command("sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config")
+	exec_command("sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config")
 	exec_command("sed -i 's/rhgb//' /boot/grub2/grub.cfg")
 	exec_command("sed -i 's/quiet//' /boot/grub2/grub.cfg")
 	logger.info('Configuring SSH service')
