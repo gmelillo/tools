@@ -2,7 +2,6 @@
 appunti/
 puppet/
 python/
-varnish/
 *.pp
 # Byte-compiled / optimized / DLL files
 __pycache__/
